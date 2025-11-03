@@ -56,7 +56,6 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
       vy: number;
       size: number;
       opacity: number;
-      color: string;
       baseHue: number;
 
       constructor() {

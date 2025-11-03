@@ -9,10 +9,29 @@ interface AnimatedBackgroundProps {
 }
 
 export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
+  const [mousePosition, setMousePosition] = React.useState({ x: 50, y: 50 });
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const prefersReducedMotion =
     typeof window !== "undefined"
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false;
+
+  React.useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [prefersReducedMotion]);
 
   if (prefersReducedMotion) {
     return (
@@ -26,46 +45,27 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   }
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none bg-black">
-      {/* Floating particles with logo color */}
-      {[...Array(120)].map((_, i) => {
-        const randomX1 = Math.random() * 100;
-        const randomY1 = Math.random() * 100;
-        const randomX2 = Math.random() * 100;
-        const randomY2 = Math.random() * 100;
-        const randomX3 = Math.random() * 100;
-        const randomY3 = Math.random() * 100;
-        const randomSize = Math.random() * 3 + 2;
-        
-        return (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            initial={{
-              x: randomX1 + "%",
-              y: randomY1 + "%",
-              opacity: 0,
-            }}
-            animate={{
-              x: [randomX1 + "%", randomX2 + "%", randomX3 + "%"],
-              y: [randomY1 + "%", randomY2 + "%", randomY3 + "%"],
-              opacity: [0, 0.6, 0],
-            }}
-            transition={{
-              duration: Math.random() * 60 + 40, // 40-100 seconds for very slow movement
-              repeat: Infinity,
-              delay: Math.random() * 10,
-              ease: "linear",
-            }}
-            style={{
-              width: randomSize + "px", // 2-5px
-              height: randomSize + "px", // 2-5px
-              backgroundColor: "#6C5CE7", // Logo color
-              boxShadow: "0 0 6px rgba(108, 92, 231, 0.8), 0 0 12px rgba(108, 92, 231, 0.4)",
-            }}
-          />
-        );
-      })}
+    <div ref={containerRef} className="fixed inset-0 overflow-hidden pointer-events-none bg-black">
+      {/* Gradient background layer */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(circle at 20% 30%, rgba(108, 92, 231, 0.4), transparent 70%),
+            radial-gradient(circle at 80% 70%, rgba(0, 229, 255, 0.3), transparent 70%),
+            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3), transparent 70%)
+          `,
+        }}
+      />
+      
+      {/* Black overlay with flashlights */
+      <div
+        className="absolute inset-0 bg-black"
+        style={{
+          maskImage: `radial-gradient(circle 400px at ${mousePosition.x}% ${mousePosition.y}%, transparent 20%, black 60%)`,
+          WebkitMaskImage: `radial-gradient(circle 400px at ${mousePosition.x}% ${mousePosition.y}%, transparent 20%, black 60%)`,
+        }}
+      />
     </div>
   );
 }

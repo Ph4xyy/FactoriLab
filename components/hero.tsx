@@ -4,14 +4,11 @@ import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { AnimatedBackground } from "@/components/animated-background";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <AnimatedBackground />
-      
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (

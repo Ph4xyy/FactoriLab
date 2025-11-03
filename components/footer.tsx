@@ -16,10 +16,8 @@ function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-white/10 bg-gradient-to-t from-cyan-950/30 via-blue-950/20 to-transparent backdrop-blur-sm">
-      <div className="absolute inset-0 bg-gradient-to-t from-purple-500/10 to-transparent" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+    <footer className="relative border-t border-white/10 backdrop-blur-sm">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">

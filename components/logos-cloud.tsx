@@ -6,9 +6,7 @@ import { techStack } from "@/lib/constants";
 
 const LogosCloud = () => {
   return (
-    <section className="py-32 relative overflow-hidden section-transition">
-      <div className="absolute inset-0 bg-gradient-to-b from-violet-950/20 via-purple-950/30 to-cyan-950/20" />
-      
+    <section className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <motion.h2

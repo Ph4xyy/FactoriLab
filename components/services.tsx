@@ -19,8 +19,7 @@ const icons = {
 
 function Services() {
   return (
-    <section className="py-32 relative section-transition">
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-950/20 via-blue-950/30 to-cyan-950/20" />
+    <section className="py-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.h2

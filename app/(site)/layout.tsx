@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { AnimatedBackground } from "@/components/animated-background";
 
 export default function SiteLayout({
   children,
@@ -7,11 +8,15 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
+    <div className="relative min-h-screen">
+      {/* Single animated background covering entire site */}
+      <AnimatedBackground />
+      
+      <div className="relative z-10">
+        <Navbar />
+        {children}
+        <Footer />
+      </div>
+    </div>
   );
 }
-

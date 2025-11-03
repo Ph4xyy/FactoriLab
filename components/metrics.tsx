@@ -10,21 +10,23 @@ function Metrics() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-accent/5" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" ref={ref}>
           {metrics.map((metric, index) => (
             <motion.div
               key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center"
+              className="text-center glass rounded-2xl p-8 border border-white/10 hover:border-primary/50 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
             >
-              <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+              <div className="text-5xl sm:text-6xl font-bold gradient-text mb-3">
                 {metric.value}
               </div>
-              <div className="text-sm sm:text-base text-muted-foreground">
+              <div className="text-sm sm:text-base text-white/60">
                 {metric.label}
               </div>
             </motion.div>
@@ -36,4 +38,3 @@ function Metrics() {
 }
 
 export default Metrics;
-

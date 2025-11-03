@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,13 +16,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { navigation } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileOpen, setIsMobileOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -36,49 +37,57 @@ function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 z-50 w-full border-b transition-all",
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-6xl rounded-2xl transition-all duration-300",
         isScrolled
-          ? "bg-background/80 backdrop-blur-md border-border/50"
-          : "bg-transparent border-transparent"
+          ? "glass shadow-2xl"
+          : "bg-transparent"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <div className="container mx-auto px-6">
+        <div className="flex h-20 items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2 group">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 360 }}
+              transition={{ duration: 0.5 }}
+              className="relative"
+            >
+              <Sparkles className="h-6 w-6 text-primary" />
+              <div className="absolute inset-0 bg-primary/50 blur-xl group-hover:bg-primary/80 transition-colors" />
+            </motion.div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-accent bg-clip-text text-transparent group-hover:from-accent group-hover:via-primary group-hover:to-purple-400 transition-all duration-300">
               Vaultic AI
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList>
+            <NavigationMenuList className="space-x-2">
               {navigation.main.map((item) => {
                 if (item.submenu) {
                   return (
                     <NavigationMenuItem key={item.name}>
-                      <NavigationMenuTrigger>
+                      <NavigationMenuTrigger className="text-white/80 hover:text-white hover:bg-white/5 bg-transparent data-[active]:bg-white/10 border-0">
                         {item.name}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                      <NavigationMenuContent className="glass border border-white/10">
+                        <ul className="grid w-[500px] gap-3 p-6">
                           {item.submenu.map((subitem) => (
                             <li key={subitem.href}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={subitem.href}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                    "block select-none space-y-1 rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-white/5 hover:border hover:border-white/10",
                                     pathname === subitem.href &&
-                                      "bg-accent text-accent-foreground"
+                                      "bg-white/5 border border-primary/50"
                                   )}
                                 >
-                                  <div className="text-sm font-medium leading-none">
+                                  <div className="text-sm font-medium leading-none text-white">
                                     {subitem.name}
                                   </div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  <p className="line-clamp-2 text-sm leading-snug text-white/60">
                                     {subitem.description}
                                   </p>
                                 </Link>
@@ -96,8 +105,8 @@ function Navbar() {
                       <NavigationMenuLink
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          pathname === item.href &&
-                            "bg-accent text-accent-foreground"
+                          "text-white/80 hover:text-white hover:bg-white/5 bg-transparent border-0",
+                          pathname === item.href && "bg-white/10 text-white"
                         )}
                       >
                         {item.name}
@@ -110,36 +119,44 @@ function Navbar() {
           </NavigationMenu>
 
           <div className="hidden lg:flex items-center space-x-4">
-            <Button asChild variant="ghost">
+            <Button 
+              asChild 
+              variant="ghost" 
+              className="text-white/80 hover:text-white hover:bg-white/10 border-0"
+            >
               <Link href="/contact">Contact</Link>
             </Button>
-            <Button asChild>
+            <Button 
+              asChild 
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-white border-0 glow"
+            >
               <Link href="/contact">Get a Quote</Link>
             </Button>
           </div>
 
           {/* Mobile Navigation */}
-          <Sheet>
+          <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-white">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="glass border-white/10 w-[300px]">
               <nav className="flex flex-col space-y-4 mt-8">
                 {navigation.main.map((item) => {
                   if (item.submenu) {
                     return (
                       <Accordion key={item.name} type="single" collapsible>
                         <AccordionItem value={item.name}>
-                          <AccordionTrigger>{item.name}</AccordionTrigger>
+                          <AccordionTrigger className="text-white">{item.name}</AccordionTrigger>
                           <AccordionContent>
                             <div className="flex flex-col space-y-2 pl-4">
                               {item.submenu.map((subitem) => (
                                 <Link
                                   key={subitem.href}
                                   href={subitem.href}
+                                  onClick={() => setIsMobileOpen(false)}
                                   className={cn(
                                     "text-sm transition-colors hover:text-primary",
                                     pathname === subitem.href && "text-primary"
@@ -158,6 +175,7 @@ function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
+                      onClick={() => setIsMobileOpen(false)}
                       className={cn(
                         "text-sm font-medium transition-colors hover:text-primary",
                         pathname === item.href && "text-primary"
@@ -168,10 +186,10 @@ function Navbar() {
                   );
                 })}
                 <div className="pt-4 space-y-2">
-                  <Button asChild variant="outline" className="w-full">
+                  <Button asChild variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">
                     <Link href="/contact">Contact</Link>
                   </Button>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full bg-gradient-to-r from-primary to-accent text-white border-0">
                     <Link href="/contact">Get a Quote</Link>
                   </Button>
                 </div>
@@ -185,4 +203,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

@@ -6,17 +6,19 @@ import { techStack } from "@/lib/constants";
 
 const LogosCloud = () => {
   return (
-    <section className="py-24 bg-muted/30 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+    <section className="py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl font-semibold text-muted-foreground"
+            transition={{ duration: 0.8 }}
+            className="text-2xl sm:text-3xl font-semibold text-white/80"
           >
-            Built with industry-leading tools
+            Built with <span className="gradient-text">industry-leading</span> tools
           </motion.h2>
         </div>
 
@@ -24,13 +26,21 @@ const LogosCloud = () => {
           {techStack.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="text-2xl font-bold text-muted-foreground/60 hover:text-primary transition-colors"
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.08,
+                type: "spring",
+                stiffness: 200
+              }}
+              whileHover={{ scale: 1.2, y: -5 }}
+              className="glass rounded-2xl p-6 border border-white/10 hover:border-primary/50 transition-all cursor-pointer group"
             >
-              {tech.name}
+              <div className="text-2xl font-bold text-white/60 group-hover:text-white group-hover:gradient-text transition-all duration-300">
+                {tech.name}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -40,4 +50,3 @@ const LogosCloud = () => {
 };
 
 export default LogosCloud;
-

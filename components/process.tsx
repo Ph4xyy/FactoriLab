@@ -3,58 +3,68 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { processSteps } from "@/lib/constants";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
 function Process() {
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section className="py-32 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+            transition={{ duration: 0.8 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
           >
-            Our Process
+            Our <span className="gradient-text">Process</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-white/60 max-w-2xl mx-auto"
           >
             A proven methodology for delivering exceptional results
           </motion.p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-accent/50 to-primary/50 hidden md:block" />
-            
-            <div className="space-y-12">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={step.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative pl-12 md:pl-0 flex gap-8"
-                >
-                  <div className="absolute left-0 md:relative md:left-0">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-bold text-lg z-10 relative border-4 border-background">
-                      {index + 1}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-5 gap-6">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
+              >
+                {/* Connector line */}
+                {index < processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-20 left-full w-full h-0.5 bg-gradient-to-r from-primary via-accent to-transparent -z-10" />
+                )}
+                
+                <div className="glass rounded-2xl p-6 border border-white/10 hover:border-primary/50 transition-all duration-300 group h-full">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="relative mb-4">
+                      <div className="absolute inset-0 bg-primary/30 blur-2xl rounded-full group-hover:bg-primary/50 transition-all" />
+                      <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent font-bold text-xl text-white z-10 group-hover:scale-110 transition-transform pulse-glow">
+                        {index + 1}
+                      </div>
                     </div>
+                    <h3 className="text-lg font-bold mb-2 group-hover:gradient-text transition-all duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-white/60 text-sm leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                    <p className="text-muted-foreground">{step.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
@@ -63,4 +73,3 @@ function Process() {
 }
 
 export default Process;
-

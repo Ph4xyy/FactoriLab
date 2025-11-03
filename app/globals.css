@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 250 251;
+    --foreground: 11 11 16;
+    --card: 255 255 255;
+    --card-foreground: 11 11 16;
+    --popover: 255 255 255;
+    --popover-foreground: 11 11 16;
+    --primary: 108 92 231;
+    --primary-foreground: 255 255 255;
+    --secondary: 245 245 246;
+    --secondary-foreground: 11 11 16;
+    --muted: 245 245 246;
+    --muted-foreground: 128 128 128;
+    --accent: 0 229 255;
+    --accent-foreground: 11 11 16;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 108 92 231;
+    --radius: 0.5rem;
+
+    --gradient-from: 108 92 231;
+    --gradient-via: 236 72 153;
+    --gradient-to: 0 229 255;
+  }
+
+  .dark {
+    --background: 11 11 16;
+    --foreground: 250 250 251;
+    --card: 20 20 28;
+    --card-foreground: 250 250 251;
+    --popover: 20 20 28;
+    --popover-foreground: 250 250 251;
+    --primary: 124 115 237;
+    --primary-foreground: 11 11 16;
+    --secondary: 30 30 40;
+    --secondary-foreground: 250 250 251;
+    --muted: 30 30 40;
+    --muted-foreground: 160 160 160;
+    --accent: 64 224 255;
+    --accent-foreground: 11 11 16;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 40 40 50;
+    --input: 40 40 50;
+    --ring: 124 115 237;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    gap: 2rem;
+  }
+
+  .marquee-content {
+    display: flex;
+    gap: 2rem;
+    animation: marquee 60s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .gradient-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+

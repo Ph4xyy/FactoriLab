@@ -149,10 +149,7 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
     };
 
     // Animation loop
-    let time = 0;
     const animate = () => {
-      time += 0.005;
-      
       // Clear with fade for trails
       ctx.save();
       ctx.globalCompositeOperation = "source-over";

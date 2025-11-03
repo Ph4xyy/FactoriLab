@@ -71,25 +71,31 @@ function Navbar() {
                       <NavigationMenuTrigger className="text-white/80 hover:text-white hover:bg-white/5 bg-transparent data-[active]:bg-white/10 border-0">
                         {item.name}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="glass border border-white/10">
-                        <ul className="grid w-[500px] gap-3 p-6">
+                      <NavigationMenuContent className="glass border border-white/10 backdrop-blur-2xl shadow-2xl">
+                        <ul className="grid w-[500px] gap-2 p-4">
                           {item.submenu.map((subitem) => (
                             <li key={subitem.href}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={subitem.href}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-lg p-4 leading-none no-underline outline-none transition-all hover:bg-white/5 hover:border hover:border-white/10",
+                                    "block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all",
+                                    "hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-cyan-500/10",
+                                    "hover:border hover:border-purple-500/30",
+                                    "group relative overflow-hidden",
                                     pathname === subitem.href &&
-                                      "bg-white/5 border border-primary/50"
+                                      "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-primary/50"
                                   )}
                                 >
-                                  <div className="text-sm font-medium leading-none text-white">
-                                    {subitem.name}
+                                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 to-cyan-600/0 group-hover:from-purple-600/5 group-hover:to-cyan-600/5 transition-all" />
+                                  <div className="relative">
+                                    <div className="text-base font-semibold leading-none text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 transition-all">
+                                      {subitem.name}
+                                    </div>
+                                    <p className="line-clamp-2 text-sm leading-snug text-white/60 mt-2">
+                                      {subitem.description}
+                                    </p>
                                   </div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-white/60">
-                                    {subitem.description}
-                                  </p>
                                 </Link>
                               </NavigationMenuLink>
                             </li>

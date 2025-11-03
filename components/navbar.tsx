@@ -39,13 +39,13 @@ function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-6xl rounded-2xl transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
         isScrolled
-          ? "glass shadow-2xl"
+          ? "glass shadow-2xl border-b border-white/10"
           : "bg-transparent"
       )}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2 group">
             <motion.div
@@ -122,13 +122,13 @@ function Navbar() {
             <Button 
               asChild 
               variant="ghost" 
-              className="text-white/80 hover:text-white hover:bg-white/10 border-0"
+              className="text-cyan-400/80 hover:text-cyan-300 hover:bg-cyan-500/10 border border-cyan-500/30"
             >
               <Link href="/contact">Contact</Link>
             </Button>
             <Button 
               asChild 
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-white border-0 glow"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white border-0 glow"
             >
               <Link href="/contact">Get a Quote</Link>
             </Button>
@@ -189,7 +189,7 @@ function Navbar() {
                   <Button asChild variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">
                     <Link href="/contact">Contact</Link>
                   </Button>
-                  <Button asChild className="w-full bg-gradient-to-r from-primary to-accent text-white border-0">
+                  <Button asChild className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">
                     <Link href="/contact">Get a Quote</Link>
                   </Button>
                 </div>

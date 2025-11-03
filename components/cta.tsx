@@ -42,7 +42,7 @@ export function CTA() {
             <Button
               asChild
               size="lg"
-              className="group text-lg px-10 py-7 h-auto bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-white border-0 glow hover:scale-105 transition-transform"
+              className="group text-lg px-10 py-7 h-auto bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white border-0 glow hover:scale-105 transition-transform"
             >
               <Link href="/contact">
                 Get Started
@@ -53,7 +53,7 @@ export function CTA() {
               asChild
               variant="outline"
               size="lg"
-              className="text-lg px-10 py-7 h-auto glass border-white/20 text-white hover:bg-white/10 hover:border-white/30 hover:scale-105 transition-transform"
+              className="text-lg px-10 py-7 h-auto glass border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400/50 hover:scale-105 transition-transform"
             >
               <Link href="/portfolio">View Portfolio</Link>
             </Button>

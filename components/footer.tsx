@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig, navigation } from "@/lib/constants";
+import { siteConfig } from "@/lib/constants";
 import { Separator } from "@/components/ui/separator";
 
 function Footer() {

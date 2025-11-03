@@ -12,7 +12,7 @@ export function CTA() {
             Ready to build something legendary?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss how we can help bring your vision to life with cutting-edge technology and exceptional design.
+            Let&apos;s discuss how we can help bring your vision to life with cutting-edge technology and exceptional design.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button asChild size="lg" className="group">

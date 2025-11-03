@@ -3,7 +3,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { processSteps } from "@/lib/constants";
-import { CheckCircle2 } from "lucide-react";
 
 function Process() {
   return (

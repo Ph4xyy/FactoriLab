@@ -10,7 +10,7 @@ interface AnimatedBackgroundProps {
 }
 
 export function AnimatedBackground({
-  variant = "flow",
+  variant: _variant = "flow",
   intensity = 1,
   className,
 }: AnimatedBackgroundProps) {

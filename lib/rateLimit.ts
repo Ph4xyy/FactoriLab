@@ -10,7 +10,7 @@ export async function checkRateLimit(identifier: string): Promise<boolean> {
   try {
     await contactLimiter.consume(identifier);
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

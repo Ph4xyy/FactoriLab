@@ -90,7 +90,7 @@ export default function WebsitePage() {
           </div>
 
           <div className="mb-24">
-            <h2 className="text-3xl font-bold mb-8 text-center">What's Included</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center">What&apos;s Included</h2>
             <div className="space-y-4">
               {[
                 "Custom design & branding",

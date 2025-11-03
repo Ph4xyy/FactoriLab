@@ -1,6 +1,5 @@
 "use client";
 
-import { Metadata } from "next";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, Globe, Zap, BarChart3, Shield, Sparkles, Check, Code2, Smartphone, Tablet, Monitor, Rocket } from "lucide-react";
+import { ArrowRight, Globe, Zap, BarChart3, Shield, Sparkles, Check, Code2, Smartphone, Rocket } from "lucide-react";
 import Link from "next/link";
 import { CTA } from "@/components/cta";
 

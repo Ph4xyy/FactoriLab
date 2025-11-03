@@ -28,27 +28,27 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none bg-black">
       {/* Floating particles with logo color */}
-      {[...Array(80)].map((_, i) => (
+      {[...Array(120)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full"
+          className="absolute rounded-full"
           initial={{
-            x: Math.random() * 100 + "%",
-            y: Math.random() * 100 + "%",
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
             opacity: 0,
           }}
           animate={{
             x: [
-              Math.random() * 100 + "%",
-              Math.random() * 100 + "%",
-              Math.random() * 100 + "%",
+              Math.random() * window.innerWidth,
+              Math.random() * window.innerWidth,
+              Math.random() * window.innerWidth,
             ],
             y: [
-              Math.random() * 100 + "%",
-              Math.random() * 100 + "%",
-              Math.random() * 100 + "%",
+              Math.random() * window.innerHeight,
+              Math.random() * window.innerHeight,
+              Math.random() * window.innerHeight,
             ],
-            opacity: [0, 0.3, 0],
+            opacity: [0, 0.6, 0],
           }}
           transition={{
             duration: Math.random() * 60 + 40, // 40-100 seconds for very slow movement
@@ -57,8 +57,10 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
             ease: "linear",
           }}
           style={{
+            width: Math.random() * 3 + 2 + "px", // 2-5px
+            height: Math.random() * 3 + 2 + "px", // 2-5px
             backgroundColor: "#6C5CE7", // Logo color
-            boxShadow: "0 0 10px rgba(108, 92, 231, 0.5), 0 0 20px rgba(108, 92, 231, 0.3)",
+            boxShadow: "0 0 6px rgba(108, 92, 231, 0.8), 0 0 12px rgba(108, 92, 231, 0.4)",
           }}
         />
       ))}

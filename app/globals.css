@@ -27,11 +27,11 @@
   }
 
   .dark {
-    --background: 0 0 0;
+    --background: 5 5 15;
     --foreground: 255 255 255;
-    --card: 15 15 20;
+    --card: 15 15 25;
     --card-foreground: 255 255 255;
-    --popover: 15 15 20;
+    --popover: 15 15 25;
     --popover-foreground: 255 255 255;
     --primary: 124 115 237;
     --primary-foreground: 255 255 255;
@@ -52,9 +52,14 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-black text-white font-sans antialiased overflow-x-hidden;
+    @apply bg-gradient-to-br from-gray-950 via-purple-950/30 to-gray-950 text-white font-sans antialiased overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -76,9 +81,19 @@
   }
 
   .glass {
-    background: rgba(15, 15, 20, 0.7);
+    background: rgba(15, 15, 25, 0.6);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-transition {
+    @apply relative;
+  }
+
+  .section-transition::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/10 to-transparent;
+    pointer-events: none;
   }
 
   .marquee {

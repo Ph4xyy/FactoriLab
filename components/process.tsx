@@ -6,8 +6,8 @@ import { processSteps } from "@/lib/constants";
 
 function Process() {
   return (
-    <section className="py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+    <section className="py-32 relative section-transition">
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 via-purple-950/30 to-pink-950/20" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.h2

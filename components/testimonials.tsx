@@ -7,8 +7,9 @@ import { Quote } from "lucide-react";
 
 function Testimonials() {
   return (
-    <section className="py-32 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 relative section-transition">
+      <div className="absolute inset-0 bg-gradient-to-b from-pink-950/20 via-purple-950/30 to-violet-950/20" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

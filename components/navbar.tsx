@@ -71,28 +71,29 @@ function Navbar() {
                       <NavigationMenuTrigger className="text-white/80 hover:text-white hover:bg-white/5 bg-transparent data-[active]:bg-white/10 border-0">
                         {item.name}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="glass border border-white/10 backdrop-blur-2xl shadow-2xl">
-                        <ul className="grid w-[500px] gap-2 p-4">
+                      <NavigationMenuContent className="bg-gradient-to-br from-gray-900/95 to-purple-900/50 border border-purple-500/20 backdrop-blur-2xl shadow-2xl">
+                        <ul className="grid w-[600px] gap-3 p-6">
                           {item.submenu.map((subitem) => (
                             <li key={subitem.href}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={subitem.href}
                                   className={cn(
-                                    "block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all",
-                                    "hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-cyan-500/10",
-                                    "hover:border hover:border-purple-500/30",
+                                    "block select-none space-y-2 rounded-2xl p-6 leading-none no-underline outline-none transition-all duration-300",
                                     "group relative overflow-hidden",
+                                    "hover:scale-105",
                                     pathname === subitem.href &&
-                                      "bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-primary/50"
+                                      "bg-gradient-to-br from-purple-500/30 to-cyan-500/30 ring-2 ring-purple-400/50"
                                   )}
                                 >
-                                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 to-cyan-600/0 group-hover:from-purple-600/5 group-hover:to-cyan-600/5 transition-all" />
+                                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 via-cyan-600/0 to-pink-600/0 group-hover:from-purple-600/20 group-hover:via-cyan-600/20 group-hover:to-pink-600/20 transition-all duration-500" />
                                   <div className="relative">
-                                    <div className="text-base font-semibold leading-none text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 transition-all">
-                                      {subitem.name}
+                                    <div className="text-lg font-bold leading-none mb-2">
+                                      <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 group-hover:via-pink-400 transition-all duration-300">
+                                        {subitem.name}
+                                      </span>
                                     </div>
-                                    <p className="line-clamp-2 text-sm leading-snug text-white/60 mt-2">
+                                    <p className="text-sm leading-relaxed text-white/60 group-hover:text-white/80 transition-colors">
                                       {subitem.description}
                                     </p>
                                   </div>

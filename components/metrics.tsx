@@ -10,8 +10,8 @@ function Metrics() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-accent/5" />
+    <section className="py-32 relative overflow-hidden section-transition">
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/20 via-blue-950/30 to-indigo-950/20" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" ref={ref}>
           {metrics.map((metric, index) => (

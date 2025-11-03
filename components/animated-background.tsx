@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface AnimatedBackgroundProps {
@@ -33,6 +32,14 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [prefersReducedMotion]);
 
+  const maskStyle = React.useMemo(() => {
+    const mask = `radial-gradient(circle 400px at ${mousePosition.x}% ${mousePosition.y}%, transparent 20%, black 60%)`;
+    return {
+      maskImage: mask,
+      WebkitMaskImage: mask,
+    };
+  }, [mousePosition.x, mousePosition.y]);
+
   if (prefersReducedMotion) {
     return (
       <div
@@ -58,13 +65,10 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
         }}
       />
       
-      {/* Black overlay with flashlights */
+      {/* Black overlay with flashlights */}
       <div
         className="absolute inset-0 bg-black"
-        style={{
-          maskImage: `radial-gradient(circle 400px at ${mousePosition.x}% ${mousePosition.y}%, transparent 20%, black 60%)`,
-          WebkitMaskImage: `radial-gradient(circle 400px at ${mousePosition.x}% ${mousePosition.y}%, transparent 20%, black 60%)`,
-        }}
+        style={maskStyle}
       />
     </div>
   );

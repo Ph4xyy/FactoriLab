@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, CheckCircle2, Server, Activity, Cloud, Zap, Sparkles, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle2, Activity, Cloud, Zap, Sparkles, Shield } from "lucide-react";
 import Link from "next/link";
 import { CTA } from "@/components/cta";
 

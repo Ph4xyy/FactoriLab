@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       <p>${validated.message}</p>
     `;
 
-    const emailData = await resend.emails.send({
+    await resend.emails.send({
       from: "Vaultic AI <onboarding@resend.dev>",
       to: [process.env.CONTACT_INBOX],
       replyTo: validated.email,
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      { message: "Contact form submitted successfully", id: emailData.id },
+      { message: "Contact form submitted successfully" },
       { status: 200 }
     );
   } catch (error) {

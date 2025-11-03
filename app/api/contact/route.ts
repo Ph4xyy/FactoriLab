@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { checkRateLimit } from "@/lib/rateLimit";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
@@ -57,6 +55,7 @@ export async function POST(req: NextRequest) {
       <p>${validated.message}</p>
     `;
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: "Vaultic AI <onboarding@resend.dev>",
       to: [process.env.CONTACT_INBOX],

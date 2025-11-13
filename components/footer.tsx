@@ -22,8 +22,9 @@ function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2 group">
-              <span className="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform inline-block">
-                FactoriLab
+              <span className="text-2xl font-bold group-hover:scale-105 transition-transform inline-block">
+                <span className="text-white">Factori</span>
+                <span className="gradient-text">Lab</span>
               </span>
             </Link>
             <p className="text-sm text-white/60 leading-relaxed">

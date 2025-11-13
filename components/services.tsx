@@ -18,8 +18,19 @@ const icons = {
 };
 
 function Services() {
+  // Color variations for each service card (no yellow)
+  const serviceColors = [
+    { icon: "from-blue-500/20 to-cyan-500/20", iconText: "text-blue-400", border: "hover:border-blue-500/50", gradient: "from-blue-500/10 to-cyan-500/10" },
+    { icon: "from-purple-500/20 to-pink-500/20", iconText: "text-purple-400", border: "hover:border-purple-500/50", gradient: "from-purple-500/10 to-pink-500/10" },
+    { icon: "from-cyan-500/20 to-blue-500/20", iconText: "text-cyan-400", border: "hover:border-cyan-500/50", gradient: "from-cyan-500/10 to-blue-500/10" },
+    { icon: "from-pink-500/20 to-purple-500/20", iconText: "text-pink-400", border: "hover:border-pink-500/50", gradient: "from-pink-500/10 to-purple-500/10" },
+    { icon: "from-indigo-500/20 to-blue-500/20", iconText: "text-indigo-400", border: "hover:border-indigo-500/50", gradient: "from-indigo-500/10 to-blue-500/10" },
+  ];
+
   return (
-    <section className="py-32 relative">
+    <section className="py-32 relative overflow-hidden">
+      {/* Smooth transition gradient from hero */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.h2
@@ -54,13 +65,13 @@ function Services() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="h-full glass border-white/10 hover:border-primary/50 transition-all duration-300 group overflow-hidden relative">
+                <Card className={`h-full glass border-white/10 ${serviceColors[index % serviceColors.length].border} transition-all duration-300 group overflow-hidden relative`}>
                   {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/10 group-hover:to-accent/10 transition-all duration-500" />
+                  <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 ${serviceColors[index % serviceColors.length].gradient} transition-all duration-500`} />
                   
                   <div className="p-8 relative z-10">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                      <Icon className="h-8 w-8 text-primary" />
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${serviceColors[index % serviceColors.length].icon} mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
+                      <Icon className={`h-8 w-8 ${serviceColors[index % serviceColors.length].iconText}`} />
                     </div>
                     <h3 className="text-2xl font-bold mb-3 group-hover:gradient-text transition-all duration-300">
                       {service.title}
@@ -78,7 +89,7 @@ function Services() {
                     <Button 
                       asChild 
                       variant="ghost" 
-                      className="w-full group/btn glass hover:bg-white/10 border border-white/10 hover:border-primary/50"
+                      className={`w-full group/btn glass hover:bg-white/10 border border-white/10 ${serviceColors[index % serviceColors.length].border}`}
                     >
                       <Link href={service.href}>
                         Explore

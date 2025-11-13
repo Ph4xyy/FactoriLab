@@ -8,6 +8,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 export function CTA() {
   return (
     <section className="py-40 relative overflow-hidden">
+      {/* Smooth transition gradient */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -11,6 +11,8 @@ function Metrics() {
 
   return (
     <section className="py-32 relative overflow-hidden">
+      {/* Smooth transition gradient */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" ref={ref}>
           {metrics.map((metric, index) => (

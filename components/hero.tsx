@@ -9,21 +9,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 transition-all duration-1000 ease-out">
-      {/* Video background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src="/14081587_1920_1080_60fps.mp4" type="video/mp4" />
-      </video>
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40 z-[1]" />
-      
       {/* Floating particles effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[2]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -46,7 +33,7 @@ export function Hero() {
         ))}
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-[3]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

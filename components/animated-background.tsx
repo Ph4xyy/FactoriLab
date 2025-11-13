@@ -8,37 +8,10 @@ interface AnimatedBackgroundProps {
 }
 
 export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
-  const [mousePosition, setMousePosition] = React.useState({ x: 50, y: 50 });
-  const containerRef = React.useRef<HTMLDivElement>(null);
   const prefersReducedMotion =
     typeof window !== "undefined"
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false;
-
-  React.useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100,
-        });
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [prefersReducedMotion]);
-
-  const maskStyle = React.useMemo(() => {
-    const mask = `radial-gradient(circle 400px at ${mousePosition.x}% ${mousePosition.y}%, transparent 20%, black 60%)`;
-    return {
-      maskImage: mask,
-      WebkitMaskImage: mask,
-    };
-  }, [mousePosition.x, mousePosition.y]);
 
   if (prefersReducedMotion) {
     return (
@@ -52,24 +25,20 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   }
 
   return (
-    <div ref={containerRef} className="fixed inset-0 overflow-hidden pointer-events-none bg-black">
-      {/* Gradient background layer */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `
-            radial-gradient(circle at 20% 30%, rgba(108, 92, 231, 0.4), transparent 70%),
-            radial-gradient(circle at 80% 70%, rgba(0, 229, 255, 0.3), transparent 70%),
-            radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3), transparent 70%)
-          `,
-        }}
-      />
+    <div className={cn("fixed inset-0 overflow-hidden pointer-events-none z-0", className)}>
+      {/* Video background covering entire site */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/19289-300877402.mp4" type="video/mp4" />
+      </video>
       
-      {/* Black overlay with flashlights */}
-      <div
-        className="absolute inset-0 bg-black"
-        style={maskStyle}
-      />
+      {/* Overlay for better text readability across all sections */}
+      <div className="absolute inset-0 bg-black/40" />
     </div>
   );
 }

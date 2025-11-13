@@ -13,39 +13,56 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
+    console.log("🎬 AnimatedBackground component mounted");
     setMounted(true);
     if (typeof window !== "undefined") {
       const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setPrefersReducedMotion(mediaQuery.matches);
+      const prefersReduced = mediaQuery.matches;
+      console.log("🎬 prefersReducedMotion:", prefersReduced);
+      setPrefersReducedMotion(prefersReduced);
     }
   }, []);
 
   React.useEffect(() => {
-    if (mounted && videoRef.current && !prefersReducedMotion) {
-      // Force video to load and play
-      console.log("Attempting to load video...");
-      videoRef.current.load();
-      
-      // Wait a bit then try to play
-      setTimeout(() => {
-        if (videoRef.current) {
-          const playPromise = videoRef.current.play();
-          if (playPromise !== undefined) {
-            playPromise
-              .then(() => {
-                console.log("Video is playing!");
-              })
-              .catch((error) => {
-                console.error("Video autoplay prevented:", error);
-              });
+    console.log("🎬 Video effect triggered - mounted:", mounted, "prefersReducedMotion:", prefersReducedMotion);
+    if (mounted && !prefersReducedMotion) {
+      console.log("🎬 Video ref current:", videoRef.current);
+      if (videoRef.current) {
+        // Force video to load and play
+        console.log("🎬 Attempting to load video...");
+        videoRef.current.load();
+        
+        // Wait a bit then try to play
+        setTimeout(() => {
+          if (videoRef.current) {
+            console.log("🎬 Attempting to play video...");
+            const playPromise = videoRef.current.play();
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  console.log("✅ Video is playing!");
+                })
+                .catch((error) => {
+                  console.error("❌ Video autoplay prevented:", error);
+                });
+            }
+          } else {
+            console.error("❌ Video ref is null after timeout");
           }
-        }
-      }, 100);
+        }, 100);
+      } else {
+        console.error("❌ Video ref is null");
+      }
+    } else {
+      console.log("🎬 Video not loading - mounted:", mounted, "prefersReducedMotion:", prefersReducedMotion);
     }
   }, [mounted, prefersReducedMotion]);
 
   // Return a single div wrapper to avoid hydration issues
+  console.log("🎬 Rendering AnimatedBackground - mounted:", mounted, "prefersReducedMotion:", prefersReducedMotion);
+  
   if (!mounted) {
+    console.log("🎬 Returning black background (not mounted yet)");
     return <div className={cn("fixed inset-0 bg-black -z-10", className)} />;
   }
 
@@ -54,6 +71,9 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
       className={cn("fixed inset-0", className)}
       style={{ zIndex: -1, pointerEvents: 'none' }}
     >
+      {/* Temporary test: visible background to confirm component is rendering */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-blue-900/20" />
+      
       {!prefersReducedMotion ? (
         <>
           {/* Video background covering entire site */}
@@ -68,7 +88,14 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
             style={{ 
               width: '100vw',
               height: '100vh',
-              objectFit: 'cover'
+              objectFit: 'cover',
+              backgroundColor: '#000'
+            }}
+            onLoadStart={() => {
+              console.log("🎬 Video load started");
+            }}
+            onLoadedMetadata={() => {
+              console.log("✅ Video metadata loaded");
             }}
             onLoadedData={() => {
               console.log("✅ Video loaded successfully");
@@ -78,8 +105,11 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
             }}
             onError={(e) => {
               console.error("❌ Video loading error:", e);
+              console.error("Video element:", videoRef.current);
               console.error("Video src:", videoRef.current?.src);
               console.error("Video currentSrc:", videoRef.current?.currentSrc);
+              console.error("Video networkState:", videoRef.current?.networkState);
+              console.error("Video readyState:", videoRef.current?.readyState);
             }}
             onCanPlay={() => {
               console.log("✅ Video can play");
@@ -89,6 +119,9 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
             }}
             onPlay={() => {
               console.log("▶️ Video is playing!");
+            }}
+            onPause={() => {
+              console.log("⏸️ Video paused");
             }}
           >
             <source src="/19289-300877402.mp4" type="video/mp4" />

@@ -23,20 +23,38 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   React.useEffect(() => {
     if (mounted && videoRef.current && !prefersReducedMotion) {
       // Force video to load and play
+      console.log("Attempting to load video...");
       videoRef.current.load();
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Video autoplay prevented:", error);
-        });
-      }
+      
+      // Wait a bit then try to play
+      setTimeout(() => {
+        if (videoRef.current) {
+          const playPromise = videoRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                console.log("Video is playing!");
+              })
+              .catch((error) => {
+                console.error("Video autoplay prevented:", error);
+              });
+          }
+        }
+      }, 100);
     }
   }, [mounted, prefersReducedMotion]);
 
   // Return a single div wrapper to avoid hydration issues
+  if (!mounted) {
+    return <div className={cn("fixed inset-0 bg-black -z-10", className)} />;
+  }
+
   return (
-    <div className={cn("fixed inset-0 -z-10", className)}>
-      {mounted && !prefersReducedMotion ? (
+    <div 
+      className={cn("fixed inset-0", className)}
+      style={{ zIndex: -1, pointerEvents: 'none' }}
+    >
+      {!prefersReducedMotion ? (
         <>
           {/* Video background covering entire site */}
           <video
@@ -46,21 +64,31 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
             muted
             playsInline
             preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute top-0 left-0 w-screen h-screen object-cover"
+            style={{ 
+              width: '100vw',
+              height: '100vh',
+              objectFit: 'cover'
+            }}
             onLoadedData={() => {
-              console.log("Video loaded successfully");
+              console.log("✅ Video loaded successfully");
               if (videoRef.current) {
                 videoRef.current.play().catch(console.error);
               }
             }}
             onError={(e) => {
-              console.error("Video loading error:", e);
+              console.error("❌ Video loading error:", e);
+              console.error("Video src:", videoRef.current?.src);
+              console.error("Video currentSrc:", videoRef.current?.currentSrc);
             }}
             onCanPlay={() => {
-              console.log("Video can play");
+              console.log("✅ Video can play");
               if (videoRef.current) {
                 videoRef.current.play().catch(console.error);
               }
+            }}
+            onPlay={() => {
+              console.log("▶️ Video is playing!");
             }}
           >
             <source src="/19289-300877402.mp4" type="video/mp4" />
@@ -68,8 +96,8 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
             Your browser does not support the video tag.
           </video>
           
-          {/* Overlay for better text readability across all sections */}
-          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+          {/* Overlay for better text readability across all sections - reduced opacity */}
+          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
         </>
       ) : (
         <div className="absolute inset-0 bg-black" />

@@ -39,7 +39,7 @@ function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl mx-auto transition-all duration-300 rounded-2xl",
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-all duration-300 rounded-2xl",
         isScrolled
           ? "glass shadow-2xl border border-white/10 backdrop-blur-xl bg-black/20"
           : "glass shadow-lg border border-white/5 backdrop-blur-xl bg-black/10"

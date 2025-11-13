@@ -44,9 +44,23 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ minWidth: '100%', minHeight: '100%', width: '100%', height: '100%' }}
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
+          zIndex: -1
+        }}
+        onLoadedData={() => {
+          if (videoRef.current) {
+            videoRef.current.play().catch(console.error);
+          }
+        }}
       >
         <source src="/19289-300877402.mp4" type="video/mp4" />
+        <source src="/14081587_1920_1080_60fps.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       

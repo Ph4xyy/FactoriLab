@@ -54,12 +54,13 @@
 
   html {
     scroll-behavior: smooth;
+    background: transparent;
   }
 
   body {
     @apply text-white font-sans antialiased overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background: #0a0a0f;
+    background: transparent;
   }
 
   h1, h2, h3, h4, h5, h6 {

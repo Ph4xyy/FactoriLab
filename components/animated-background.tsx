@@ -15,12 +15,9 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   React.useEffect(() => {
     console.log("🎬 AnimatedBackground component mounted");
     setMounted(true);
-    if (typeof window !== "undefined") {
-      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-      const prefersReduced = mediaQuery.matches;
-      console.log("🎬 prefersReducedMotion:", prefersReduced);
-      setPrefersReducedMotion(prefersReduced);
-    }
+    // Always allow video background, even with reduced motion preference
+    // The video is muted and non-intrusive, so it's acceptable
+    setPrefersReducedMotion(false);
   }, []);
 
   React.useEffect(() => {
@@ -71,13 +68,8 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
       className={cn("fixed inset-0", className)}
       style={{ zIndex: -1, pointerEvents: 'none' }}
     >
-      {/* Temporary test: visible background to confirm component is rendering */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-blue-900/20" />
-      
-      {!prefersReducedMotion ? (
-        <>
-          {/* Video background covering entire site */}
-          <video
+      {/* Video background covering entire site - always render */}
+      <video
             ref={videoRef}
             autoPlay
             loop
@@ -131,10 +123,6 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
           
           {/* Overlay for better text readability across all sections - reduced opacity */}
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-        </>
-      ) : (
-        <div className="absolute inset-0 bg-black" />
-      )}
     </div>
   );
 }

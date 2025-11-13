@@ -39,14 +39,14 @@ function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl mx-auto transition-all duration-300 rounded-2xl",
         isScrolled
-          ? "glass shadow-2xl border-b border-white/5"
-          : "bg-transparent"
+          ? "glass shadow-2xl border border-white/10 backdrop-blur-xl bg-black/20"
+          : "glass shadow-lg border border-white/5 backdrop-blur-xl bg-black/10"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2 group">
             <motion.div
               whileHover={{ scale: 1.1, rotate: 360 }}

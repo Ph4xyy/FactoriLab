@@ -16,9 +16,14 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
 
   React.useEffect(() => {
     if (videoRef.current && !prefersReducedMotion) {
-      videoRef.current.play().catch((error) => {
-        console.log("Video autoplay prevented:", error);
-      });
+      // Force video to load and play
+      videoRef.current.load();
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Video autoplay prevented:", error);
+        });
+      }
     }
   }, [prefersReducedMotion]);
 
@@ -34,8 +39,8 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
   }
 
   return (
-    <div className={cn("fixed inset-0 overflow-hidden pointer-events-none z-0", className)}>
-      {/* Video background covering entire site */}
+    <>
+      {/* Video background covering entire site - fixed position directly */}
       <video
         ref={videoRef}
         autoPlay
@@ -43,17 +48,19 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ 
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          objectFit: 'cover',
-          zIndex: -1
-        }}
+        className="fixed top-0 left-0 w-full h-full object-cover"
+        style={{ zIndex: -1 }}
         onLoadedData={() => {
+          console.log("Video loaded successfully");
+          if (videoRef.current) {
+            videoRef.current.play().catch(console.error);
+          }
+        }}
+        onError={(e) => {
+          console.error("Video loading error:", e);
+        }}
+        onCanPlay={() => {
+          console.log("Video can play");
           if (videoRef.current) {
             videoRef.current.play().catch(console.error);
           }
@@ -65,7 +72,7 @@ export function AnimatedBackground({ className }: AnimatedBackgroundProps) {
       </video>
       
       {/* Overlay for better text readability across all sections */}
-      <div className="absolute inset-0 bg-black/30" />
-    </div>
+      <div className="fixed inset-0 bg-black/30 pointer-events-none" style={{ zIndex: -1 }} />
+    </>
   );
 }

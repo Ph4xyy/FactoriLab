@@ -34,17 +34,18 @@ function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-all duration-300 rounded-2xl",
-        isScrolled
-          ? "glass shadow-2xl border border-white/10 backdrop-blur-xl bg-black/20"
-          : "glass shadow-lg border border-white/5 backdrop-blur-xl bg-black/10"
-      )}
-    >
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={cn(
+          "w-[95%] max-w-7xl transition-all duration-300 rounded-2xl pointer-events-auto",
+          isScrolled
+            ? "glass shadow-2xl border border-white/10 backdrop-blur-xl bg-black/20"
+            : "glass shadow-lg border border-white/5 backdrop-blur-xl bg-black/10"
+        )}
+      >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2 group">
@@ -202,7 +203,8 @@ function Navbar() {
           </Sheet>
         </div>
       </div>
-    </motion.nav>
+      </motion.nav>
+    </div>
   );
 }
 

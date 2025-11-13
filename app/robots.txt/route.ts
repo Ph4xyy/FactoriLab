@@ -5,7 +5,7 @@ export async function GET() {
 Allow: /
 Disallow: /api/
 
-Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL || "https://vaultic.ai"}/sitemap.xml
+Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL || "https://factorilab.com"}/sitemap.xml
 `;
 
   return new NextResponse(robotsTxt, {

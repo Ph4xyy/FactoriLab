@@ -1,4 +1,4 @@
-# Deployment Guide for Vaultic AI
+# Deployment Guide for FactoriLab
 
 ## Quick Start
 
@@ -21,9 +21,9 @@ This site is production-ready and can be deployed immediately to Vercel.
 You need to set these in your Vercel (or hosting provider) dashboard:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://vaultic.ai
+NEXT_PUBLIC_SITE_URL=https://factorilab.com
 RESEND_API_KEY=re_xxxxxxxxxxxxx
-CONTACT_INBOX=hello@vaultic.ai
+CONTACT_INBOX=hello@factorilab.com
 ```
 
 ### Getting a Resend API Key
@@ -227,10 +227,10 @@ Most content is in:
 ## Support
 
 For issues or questions:
-- Email: hello@vaultic.ai
-- GitHub Issues: [GitHub](https://github.com/VaulticAI/vaultic-ai/issues)
+- Email: hello@factorilab.com
+- GitHub Issues: [GitHub](https://github.com/FactoriLab/factorilab/issues)
 
 ## License
 
-Copyright © 2024 Vaultic AI. All rights reserved.
+Copyright © 2024 FactoriLab. All rights reserved.
 

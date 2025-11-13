@@ -1,8 +1,8 @@
-# 🚀 Vaultic AI - Quick Start Guide
+# 🚀 FactoriLab - Quick Start Guide
 
 ## What's Been Built
 
-A **production-ready** marketing website for Vaultic AI with:
+A **production-ready** marketing website for FactoriLab with:
 
 ✅ **48 TypeScript/React files** - Fully typed codebase
 ✅ **Modern Tech Stack** - Next.js 15, Tailwind, shadcn/ui
@@ -30,7 +30,7 @@ Create `.env.local`:
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 RESEND_API_KEY=re_your_key_here
-CONTACT_INBOX=hello@vaultic.ai
+CONTACT_INBOX=hello@factorilab.com
 ```
 
 ### 3️⃣ Run Development Server
@@ -44,7 +44,7 @@ Open http://localhost:3000
 ## Project Structure
 
 ```
-VaulticAI/
+FactoriLab/
 ├── app/                    # Next.js pages
 │   ├── (site)/            # Main site routes
 │   │   ├── page.tsx       # Homepage
@@ -163,5 +163,5 @@ Questions? Check:
 
 ---
 
-**Built with ❤️ for Vaultic AI**
+**Built with ❤️ for FactoriLab**
 

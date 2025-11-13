@@ -57,7 +57,7 @@ function Navbar() {
               <div className="absolute inset-0 bg-primary/50 blur-xl group-hover:bg-primary/80 transition-colors" />
             </motion.div>
             <span className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-400 to-accent bg-clip-text text-transparent group-hover:from-accent group-hover:via-primary group-hover:to-purple-400 transition-all duration-300">
-              Vaultic AI
+              FactoriLab
             </span>
           </Link>
 

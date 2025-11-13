@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: "Vaultic AI <onboarding@resend.dev>",
+      from: "FactoriLab <onboarding@resend.dev>",
       to: [process.env.CONTACT_INBOX],
       replyTo: validated.email,
       subject: `New Contact: ${validated.name}`,

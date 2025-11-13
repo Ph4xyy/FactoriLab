@@ -1,6 +1,6 @@
-# Vaultic AI - Marketing Website
+# FactoriLab - Marketing Website
 
-A production-ready marketing website for Vaultic AI, built with Next.js 15, TypeScript, and Tailwind CSS.
+A production-ready marketing website for FactoriLab, built with Next.js 15, TypeScript, and Tailwind CSS.
 
 ## Features
 
@@ -38,8 +38,8 @@ A production-ready marketing website for Vaultic AI, built with Next.js 15, Type
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/VaulticAI/vaultic-ai.git
-cd vaultic-ai
+git clone https://github.com/FactoriLab/factorilab.git
+cd factorilab
 ```
 
 2. Install dependencies:
@@ -56,7 +56,7 @@ cp .env.example .env.local
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 RESEND_API_KEY=your_resend_api_key_here
-CONTACT_INBOX=hello@vaultic.ai
+CONTACT_INBOX=hello@factorilab.com
 ```
 
 5. Run the development server:
@@ -69,7 +69,7 @@ npm run dev
 ## Project Structure
 
 ```
-vaultic-ai/
+factorilab/
 ├── app/                      # Next.js App Router
 │   ├── (site)/              # Main site routes
 │   │   ├── layout.tsx       # Site layout with Navbar/Footer
@@ -160,9 +160,9 @@ npm run start
 
 ## License
 
-Copyright © 2024 Vaultic AI. All rights reserved.
+Copyright © 2024 FactoriLab. All rights reserved.
 
 ## Support
 
-For questions or support, email us at hello@vaultic.ai
+For questions or support, email us at hello@factorilab.com
 

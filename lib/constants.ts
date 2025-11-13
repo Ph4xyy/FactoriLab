@@ -1,13 +1,13 @@
 export const siteConfig = {
-  name: "Vaultic AI",
+  name: "FactoriLab",
   tagline: "Build Lightning-Fast AI Experiences & Elite Web Apps",
   description:
-    "Vaultic AI crafts conversion-focused websites, robust web apps, and production AI systems—deployed on Vercel for speed at global scale.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://vaultic.ai",
+    "FactoriLab crafts conversion-focused websites, robust web apps, and production AI systems—deployed on Vercel for speed at global scale.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://factorilab.com",
   links: {
-    twitter: "https://twitter.com/VaulticAI",
-    github: "https://github.com/VaulticAI",
-    linkedin: "https://linkedin.com/company/VaulticAI",
+    twitter: "https://twitter.com/FactoriLab",
+    github: "https://github.com/FactoriLab",
+    linkedin: "https://linkedin.com/company/FactoriLab",
   },
 };
 
@@ -137,7 +137,7 @@ export const metrics = [
 export const testimonials = [
   {
     quote:
-      "Vaultic AI delivered an AI-powered dashboard that cut our support time in half. Incredible work.",
+      "FactoriLab delivered an AI-powered dashboard that cut our support time in half. Incredible work.",
     author: "Sarah Chen",
     role: "CTO, TechFlow",
     avatar: "/testimonials/avatar1.jpg",

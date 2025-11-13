@@ -23,7 +23,7 @@ function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2 group">
               <span className="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform inline-block">
-                Vaultic AI
+                FactoriLab
               </span>
             </Link>
             <p className="text-sm text-white/60 leading-relaxed">
@@ -138,7 +138,7 @@ function Footer() {
         <Separator className="my-12 bg-white/10" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-sm text-white/60">
-          <p>© {year} Vaultic AI. All rights reserved.</p>
+          <p>© {year} FactoriLab. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="/privacy" className="hover:text-primary transition-colors">
               Privacy

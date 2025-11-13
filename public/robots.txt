@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://vaultic.ai/sitemap.xml
+Sitemap: https://factorilab.com/sitemap.xml
 

@@ -207,8 +207,8 @@ const aboutSection = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen w-full bg-[#050509] text-white">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.9),_#020617)]" />
+    <div className="min-h-screen w-full bg-[#050506] text-white">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(250,244,227,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(3,4,6,1),_#050506)]" />
       <div className="relative">
         <Header />
 
@@ -224,11 +224,11 @@ export default function HomePage() {
               </p>
               <div className="flex flex-wrap items-center gap-4 text-[11px] text-muted-foreground/80">
                 <span>Websites</span>
-                <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                <span className="h-1 w-1 rounded-full bg-[#f4d68b]/60" />
                 <span>Web apps & dashboards</span>
-                <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                <span className="h-1 w-1 rounded-full bg-[#f4d68b]/60" />
                 <span>AI automation & infra</span>
-                <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+                <span className="h-1 w-1 rounded-full bg-[#f4d68b]/60" />
                 <span>Custom agents & copilots</span>
               </div>
             </div>

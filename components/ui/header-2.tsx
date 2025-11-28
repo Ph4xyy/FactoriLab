@@ -67,7 +67,7 @@ export function Header() {
           <Button variant="outline" className="text-xs">
             Client Portal
           </Button>
-          <Button className="text-xs">
+          <Button className="text-xs rounded-full bg-[#f4d68b] text-black hover:bg-[#eac66c] transition-colors">
             Book a call
           </Button>
         </div>
@@ -115,7 +115,7 @@ export function Header() {
             <Button variant="outline" className="w-full">
               Client Portal
             </Button>
-            <Button className="w-full">
+            <Button className="w-full rounded-full bg-[#f4d68b] text-black hover:bg-[#eac66c] transition-colors">
               Book a call
             </Button>
           </div>

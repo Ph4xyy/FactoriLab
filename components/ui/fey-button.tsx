@@ -11,7 +11,7 @@ interface FeyButtonProps
 
 const LockIcon = ({ className }: { className?: string }) => {
   const { resolvedTheme } = useTheme();
-  const strokeColor = resolvedTheme === "dark" ? "#868F97" : "#4B5563";
+  const strokeColor = resolvedTheme === "dark" ? "#a1a1aa" : "#4B5563";
 
   return (
     <svg

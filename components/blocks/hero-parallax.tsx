@@ -105,15 +105,15 @@ export const HeroCopy = () => {
   return (
     <div className="max-w-6xl relative mx-auto py-12 md:py-24 px-4 w-full">
       <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground mb-6">
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#f4d68b]" />
         <span>Factorilab · AI & Web Studio</span>
       </div>
       <h1 className="text-3xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white">
         Build serious{" "}
-        <span className="text-slate-200">web experiences</span>{" "}
+        <span className="text-white/80">web experiences</span>{" "}
         <br className="hidden md:block" />
         & reliable{" "}
-        <span className="text-slate-200">AI systems</span>.
+        <span className="text-white/80">AI systems</span>.
       </h1>
       <p className="max-w-2xl text-sm md:text-base mt-6 text-muted-foreground">
         Factorilab crafts conversion-focused websites, robust web apps, and
@@ -123,7 +123,7 @@ export const HeroCopy = () => {
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <a
           href="#contact"
-          className="inline-flex items-center justify-center rounded-full bg-white text-black text-xs font-medium px-5 py-2.5"
+          className="inline-flex items-center justify-center rounded-full bg-[#f4d68b] text-black text-xs font-medium px-5 py-2.5 hover:bg-[#eac66c] transition-colors"
         >
           Book a strategy call
         </a>

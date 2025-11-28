@@ -48,7 +48,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
   return (
     <section
       id={id}
-      className="relative py-20 md:py-32 bg-black overflow-hidden"
+      className="relative py-20 md:py-32 bg-[#050506] overflow-hidden"
     >
       <div className="container max-w-[1220px] w-full px-6 md:px-10 relative z-10 mx-auto">
         <motion.div
@@ -68,7 +68,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
               </h2>
             </div>
 
-            <p className="text-[#868f97] text-sm md:text-[15px] leading-6">
+            <p className="text-muted-foreground text-sm md:text-[15px] leading-6">
               {description}
             </p>
           </motion.div>

@@ -2,7 +2,6 @@ import HeroParallax, { HeroProduct } from "@/components/blocks/hero-parallax";
 import SectionWithMockup from "@/components/blocks/section-with-mockup";
 import { Header } from "@/components/ui/header-2";
 import { MinimalFooter } from "@/components/ui/minimal-footer";
-import { FeyButton } from "@/components/ui/fey-button";
 import { getPageSEO } from "@/lib/seo";
 import { Metadata } from "next";
 

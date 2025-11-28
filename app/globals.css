@@ -16,7 +16,7 @@
     --secondary-foreground: 11 11 16;
     --muted: 245 245 246;
     --muted-foreground: 128 128 128;
-    --accent: 0 229 255;
+    --accent: 240 240 240;
     --accent-foreground: 11 11 16;
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
@@ -27,25 +27,25 @@
   }
 
   .dark {
-    --background: 5 5 15;
+    --background: 5 5 9;
     --foreground: 255 255 255;
-    --card: 15 15 25;
+    --card: 15 15 20;
     --card-foreground: 255 255 255;
-    --popover: 15 15 25;
+    --popover: 15 15 20;
     --popover-foreground: 255 255 255;
-    --primary: 124 115 237;
-    --primary-foreground: 255 255 255;
-    --secondary: 25 25 35;
+    --primary: 255 255 255;
+    --primary-foreground: 0 0 0;
+    --secondary: 25 25 30;
     --secondary-foreground: 255 255 255;
-    --muted: 25 25 35;
-    --muted-foreground: 160 160 160;
-    --accent: 0 229 255;
-    --accent-foreground: 0 0 0;
+    --muted: 25 25 30;
+    --muted-foreground: 134 143 151;
+    --accent: 40 40 45;
+    --accent-foreground: 255 255 255;
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
-    --border: 30 30 45;
-    --input: 30 30 45;
-    --ring: 124 115 237;
+    --border: 30 30 40;
+    --input: 30 30 40;
+    --ring: 255 255 255;
   }
 
   * {
@@ -74,11 +74,7 @@
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-accent;
-  }
-
-  .glow {
-    box-shadow: 0 0 20px rgba(124, 115, 237, 0.3), 0 0 40px rgba(124, 115, 237, 0.1);
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80;
   }
 
   .glass {
@@ -94,7 +90,7 @@
 
   .section-transition::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/10 to-transparent;
+    @apply absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent;
     pointer-events: none;
   }
 
@@ -132,18 +128,6 @@
     }
   }
 
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(124, 115, 237, 0.4), 0 0 40px rgba(124, 115, 237, 0.2);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(124, 115, 237, 0.6), 0 0 60px rgba(124, 115, 237, 0.3);
-    }
-  }
 
   .gradient-mask {
     mask-image: linear-gradient(

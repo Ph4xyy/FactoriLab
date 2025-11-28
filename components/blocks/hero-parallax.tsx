@@ -57,7 +57,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
   return (
     <div
       ref={ref}
-      className="min-h-screen pt-28 pb-24 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
+      className="min-h-screen pt-32 pb-24 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
     >
       <HeroCopy />
 
@@ -69,7 +69,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
           opacity,
         }}
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-16 px-6 md:px-10">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-16 px-6 md:px-12">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -78,7 +78,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-16 space-x-10 px-6 md:px-10">
+        <motion.div className="flex flex-row mb-16 space-x-10 px-6 md:px-12">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -87,7 +87,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 px-6 md:px-10">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 px-6 md:px-12">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -157,7 +157,7 @@ export const ProductCard = ({
         y: -18,
       }}
       key={product.title}
-      className="group/product h-80 w-[24rem] md:h-96 md:w-[26rem] relative flex-shrink-0 rounded-3xl overflow-hidden border border-white/8 bg-white/5"
+      className="group/product h-80 w-[22rem] md:h-96 md:w-[26rem] relative flex-shrink-0 rounded-3xl overflow-hidden border border-white/10 bg-white/5"
     >
       <Link
         href={product.link}

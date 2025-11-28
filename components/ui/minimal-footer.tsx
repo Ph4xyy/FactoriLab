@@ -1,7 +1,6 @@
 import {
-  FacebookIcon,
   GithubIcon,
-  Grid2X2Plus,
+  LayoutGrid,
   InstagramIcon,
   LinkedinIcon,
   TwitterIcon,
@@ -39,7 +38,7 @@ export function MinimalFooter() {
         <div className="grid grid-cols-6 gap-6 px-4 py-10 md:px-0 md:py-12">
           <div className="col-span-6 flex flex-col gap-5 md:col-span-4">
             <a href="#" className="w-max opacity-70">
-              <Grid2X2Plus className="size-7" />
+              <LayoutGrid className="size-7" />
             </a>
             <p className="text-muted-foreground max-w-sm text-xs md:text-sm">
               Factorilab is a lean studio building conversion-focused websites,

@@ -363,7 +363,7 @@ export default function SubscriptionPage() {
                         <p className="text-sm text-muted-foreground mb-4">
                           Votre abonnement sera annulé le{" "}
                           <strong>{formatDate(subscription.nextBillingDate)}</strong>.
-                          Vous continuerez à avoir accès à toutes les fonctionnalités jusqu'à
+                          Vous continuerez à avoir accès à toutes les fonctionnalités jusqu&apos;à
                           cette date.
                         </p>
                         <Button
@@ -371,7 +371,7 @@ export default function SubscriptionPage() {
                           disabled={isCancelling}
                           variant="outline"
                         >
-                          Réactiver l'abonnement
+                          Réactiver l&apos;abonnement
                         </Button>
                       </div>
                     </div>
@@ -382,15 +382,15 @@ export default function SubscriptionPage() {
                       <DialogTrigger asChild>
                         <Button variant="destructive">
                           <X className="h-4 w-4 mr-2" />
-                          Annuler l'abonnement
+                          Annuler l&apos;abonnement
                         </Button>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Annuler l'abonnement</DialogTitle>
+                          <DialogTitle>Annuler l&apos;abonnement</DialogTitle>
                           <DialogDescription>
                             Êtes-vous sûr de vouloir annuler votre abonnement ? Vous
-                            continuerez à avoir accès jusqu'au{" "}
+                            continuerez à avoir accès jusqu&apos;au{" "}
                             <strong>{formatDate(subscription.nextBillingDate)}</strong>.
                           </DialogDescription>
                         </DialogHeader>
@@ -399,7 +399,7 @@ export default function SubscriptionPage() {
                             variant="outline"
                             onClick={() => setShowCancelDialog(false)}
                           >
-                            Non, garder l'abonnement
+                            Non, garder l&apos;abonnement
                           </Button>
                           <Button
                             variant="destructive"
@@ -458,7 +458,7 @@ export default function SubscriptionPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label htmlFor="expiry">Date d'expiration</Label>
+                            <Label htmlFor="expiry">Date d&apos;expiration</Label>
                             <Input
                               id="expiry"
                               type="text"

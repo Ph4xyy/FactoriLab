@@ -22,36 +22,37 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
   const ref = React.useRef<HTMLDivElement | null>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = { stiffness: 300, damping: 30, bounce: 80 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 1], [0, 700]),
+    springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 1], [0, -700]),
+    springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [18, 0]),
+    springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [0.3, 1]),
+    springConfig
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [18, 0]),
+    springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-    springConfig,
+    useTransform(scrollYProgress, [0, 0.2], [-500, 200]),
+    springConfig
   );
 
   return (
@@ -103,17 +104,15 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
 
 export const HeroCopy = () => {
   return (
-    <div className="relative mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-24 w-full">
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground mb-6">
+    <div className="max-w-6xl relative mx-auto pb-10 px-6 w-full">
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/40 px-3 py-1 text-[11px] text-muted-foreground mb-6">
         <span className="h-1.5 w-1.5 rounded-full bg-[#f4d68b]" />
         <span>Factorilab · AI & Web Studio</span>
       </div>
       <h1 className="text-3xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white">
-        Build serious{" "}
-        <span className="text-white/80">web experiences</span>{" "}
+        Build serious web experiences
         <br className="hidden md:block" />
-        & reliable{" "}
-        <span className="text-white/80">AI systems</span>.
+        &amp; reliable AI systems.
       </h1>
       <p className="max-w-2xl text-sm md:text-base mt-6 text-muted-foreground">
         Factorilab crafts conversion-focused websites, robust web apps, and
@@ -159,10 +158,7 @@ export const ProductCard = ({
       key={product.title}
       className="group/product h-80 w-[22rem] md:h-96 md:w-[26rem] relative flex-shrink-0 rounded-3xl overflow-hidden border border-white/10 bg-white/5"
     >
-      <Link
-        href={product.link}
-        className="block h-full w-full group-hover/product:shadow-2xl"
-      >
+      <Link href={product.link} className="block h-full w-full">
         <Image
           src={product.thumbnail}
           height={600}
@@ -171,7 +167,7 @@ export const ProductCard = ({
           alt={product.title}
         />
       </Link>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black/50 pointer-events-none transition-opacity" />
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black/55 pointer-events-none transition-opacity" />
       <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
         <h2 className="opacity-0 group-hover/product:opacity-100 text-sm text-white font-medium">
           {product.title}
@@ -182,4 +178,3 @@ export const ProductCard = ({
 };
 
 export default HeroParallax;
-

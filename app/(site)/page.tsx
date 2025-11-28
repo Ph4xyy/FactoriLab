@@ -110,13 +110,13 @@ const webSection = {
   ),
   description: (
     <>
-      We design and build marketing sites that look nothing like your
-      competitors. Clear narrative, fast loading, and a layout tailored to
-      how your buyers actually decide.
+      We design and build marketing sites that don&apos;t look like anything
+      your competitors ship. Clear narrative, high performance, and layouts
+      tuned for real conversions.
       <br />
       <br />
-      Everything ships on a modern Next.js + Vercel stack, so your brand
-      feels sharp and responsive on every device.
+      Everything runs on a modern Next.js + Vercel stack, so your brand
+      stays sharp and fast everywhere.
     </>
   ),
   primaryImageSrc:
@@ -131,18 +131,18 @@ const appsSection = {
     <>
       Web apps & internal tools
       <br />
-      your team actually enjoys using.
+      your team actually enjoys.
     </>
   ),
   description: (
     <>
       Dashboards, client portals, and internal tools that feel as considered
-      as your public site. We obsess over the flows your team touches every
-      day&mdash;states, edge cases, permissions.
+      as your public site. We design the flows your team touches every day:
+      states, errors, permissions, empty states.
       <br />
       <br />
-      Built with TypeScript and modern patterns so you can iterate without
-      rebuilding from scratch every quarter.
+      Built with TypeScript and modern patterns so you can ship fast without
+      collecting debt.
     </>
   ),
   primaryImageSrc:
@@ -157,17 +157,17 @@ const aiSection = {
     <>
       AI automation, infra & agents
       <br />
-      around the way you work.
+      that respect your stack.
     </>
   ),
   description: (
     <>
-      We wire AI into your stack with intention: triage, routing, reporting,
-      and internal copilots that reduce noise instead of creating more.
+      We wire AI into your existing tools instead of adding more chaos.
+      Triage, routing, reporting, and internal copilots that reduce noise.
       <br />
       <br />
       Observability, failure modes, and data boundaries are part of the
-      design&mdash;not an afterthought.
+      design, not an afterthought.
     </>
   ),
   primaryImageSrc:
@@ -182,17 +182,17 @@ const aboutSection = {
     <>
       A small studio
       <br />
-      for serious builders.
+      for serious teams.
     </>
   ),
   description: (
     <>
-      Factorilab works with a limited number of teams per quarter. You talk
-      directly to the people designing and building, not an account layer.
+      Factorilab works with a limited number of teams per quarter. You work
+      directly with the people designing and building, not an account layer.
       <br />
       <br />
       We&apos;re here for founders and operators who care about the details:
-      copy, motion, systems, and the invisible parts that make your product
+      copy, motion, systems, and the invisible pieces that make your product
       feel sharp.
     </>
   ),
@@ -207,8 +207,7 @@ function MetricsStrip() {
     <section className="border-y border-white/8 bg-black/40">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-[11px] text-muted-foreground md:flex-row md:items-center md:justify-between">
         <p>
-          Factorilab builds for founders, lean teams, and agencies that need a
-          calm technical partner.
+          Factorilab builds for founders, lean teams, and agencies that need a calm technical partner.
         </p>
         <div className="flex flex-wrap items-center gap-3">
           <span>Websites</span>
@@ -237,8 +236,7 @@ function FinalCtaSection() {
           </h3>
           <p className="text-sm text-muted-foreground">
             Share a few lines about your product, timelines, and constraints.
-            We&apos;ll respond with a short Loom or a call invite &mdash; no
-            pressure, no spam.
+            We&apos;ll reply with a short Loom or a call invite &mdash; no spam.
           </p>
         </div>
         <div className="flex flex-col gap-3 md:items-end">
@@ -255,7 +253,7 @@ function FinalCtaSection() {
 export default function HomePage() {
   return (
     <div className="min-h-screen w-full bg-[#050506] text-white">
-      {/* Soft global background, no blue or purple */}
+      {/* soft global background, no blue/purple */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(250,244,227,0.06),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(3,4,6,1),_#050506)]" />
 
       <div className="relative">
@@ -263,7 +261,6 @@ export default function HomePage() {
 
         {/* IMMERSIVE HERO */}
         <section className="relative min-h-[100vh] w-full overflow-hidden">
-          {/* bottom gradient to smooth transition into the next section */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#050506]" />
 
           <HeroParallax products={heroProducts} />

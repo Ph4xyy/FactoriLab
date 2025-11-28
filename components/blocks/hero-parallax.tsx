@@ -57,7 +57,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
   return (
     <div
       ref={ref}
-      className="h-[260vh] py-32 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
+      className="min-h-screen pt-28 pb-24 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
     >
       <HeroCopy />
 
@@ -69,7 +69,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
           opacity,
         }}
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 mb-16 px-4">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-16 px-6 md:px-10">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -78,7 +78,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-16 space-x-8 px-4">
+        <motion.div className="flex flex-row mb-16 space-x-10 px-6 md:px-10">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -87,7 +87,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 px-4">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 px-6 md:px-10">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -103,7 +103,7 @@ const HeroParallax = ({ products }: { products: HeroProduct[] }) => {
 
 export const HeroCopy = () => {
   return (
-    <div className="max-w-6xl relative mx-auto py-12 md:py-24 px-4 w-full">
+    <div className="relative mx-auto max-w-6xl px-4 md:px-6 py-12 md:py-24 w-full">
       <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground mb-6">
         <span className="h-1.5 w-1.5 rounded-full bg-[#f4d68b]" />
         <span>Factorilab · AI & Web Studio</span>
@@ -123,13 +123,13 @@ export const HeroCopy = () => {
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <a
           href="#contact"
-          className="inline-flex items-center justify-center rounded-full bg-[#f4d68b] text-black text-xs font-medium px-5 py-2.5 hover:bg-[#eac66c] transition-colors"
+          className="inline-flex items-center justify-center rounded-full bg-[#f4d68b] text-black text-xs md:text-sm font-medium px-5 py-2.5 hover:bg-[#eac66c] transition-colors"
         >
           Book a strategy call
         </a>
         <a
           href="#work"
-          className="inline-flex items-center justify-center rounded-full border border-white/15 text-xs font-medium px-5 py-2.5 text-muted-foreground hover:bg-white/5"
+          className="inline-flex items-center justify-center rounded-full border border-white/16 bg-transparent text-xs md:text-sm font-medium px-5 py-2.5 text-muted-foreground hover:bg-white/5 transition-colors"
         >
           View case studies
         </a>
@@ -157,7 +157,7 @@ export const ProductCard = ({
         y: -18,
       }}
       key={product.title}
-      className="group/product h-80 w-[22rem] relative flex-shrink-0 rounded-3xl overflow-hidden border border-white/8 bg-white/5"
+      className="group/product h-80 w-[24rem] md:h-96 md:w-[26rem] relative flex-shrink-0 rounded-3xl overflow-hidden border border-white/8 bg-white/5"
     >
       <Link
         href={product.link}

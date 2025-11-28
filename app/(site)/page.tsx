@@ -212,9 +212,13 @@ export default function HomePage() {
       <div className="relative">
         <Header />
 
-        <main className="mx-auto max-w-6xl px-4 pb-20">
+        {/* Immersive hero - full width */}
+        <section className="relative min-h-[100vh] w-full overflow-hidden">
           <HeroParallax products={heroProducts} />
+        </section>
 
+        {/* Rest of the page in a centered container */}
+        <main className="mx-auto max-w-6xl px-4 pb-20">
           {/* Trust row */}
           <section className="mt-12 border-y border-white/5 py-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -256,9 +260,12 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 md:items-end">
-                <FeyButton>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-full bg-[#f4d68b] text-black text-xs md:text-sm font-medium px-5 py-2.5 hover:bg-[#eac66c] transition-colors"
+                >
                   Start a project brief
-                </FeyButton>
+                </a>
                 <p className="text-[11px] text-muted-foreground">
                   We typically reply within 24 hours on weekdays.
                 </p>
